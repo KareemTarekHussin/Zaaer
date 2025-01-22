@@ -1,29 +1,24 @@
-import React from "react";
-
-const Input: React.FC<{
+const TextArea: React.FC<{
   id: string;
-  type: string;
   placeholder?: string;
   name: string;
-  value?: string; 
+  value?: string; // Backend requirement
   register: any;
-}> = ({ id, type, placeholder, name, value, register }) => {
-  // 	It takes (id, placeholder, name, value)
+}> = ({ id, placeholder, name, value, register }) => {
   return (
     <div className="mb-4">
       <label htmlFor={id} className="block text-sm font-medium">
         {placeholder || name}
       </label>
-      <input
+      <textarea
         id={id}
-        type={type}
         placeholder={placeholder}
         defaultValue={value || ""} // Use value as defaultValue
-        {...register(name)} // Register the input
+        {...register(name)} // Register the textarea
         className="mt-1 block w-full border-gray-300 rounded-md"
       />
     </div>
   );
 };
 
-export default Input;
+export default TextArea;

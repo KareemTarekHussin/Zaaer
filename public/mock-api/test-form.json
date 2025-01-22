@@ -1,0 +1,51 @@
+{
+  "pageTitle": "Test Form",
+  "components": [
+    {
+      "type": "form",
+      "config": {
+        "formKey": "testFormLocalStorage", 
+        "fields": [
+          { "type": "text", "id": "username", "name": "Username", "placeholder": "Enter your username", "value": "" },
+          { "type": "password", "id": "password", "name": "Password", "placeholder": "Enter your password", "value": "" },
+          { "type": "email", "id": "email", "name": "Email", "placeholder": "Enter your email", "value": "" },
+          { "type": "tel", "id": "phone", "name": "Phone Number", "placeholder": "Enter your phone number", "value": "" },
+          { "type": "date", "id": "dob", "name": "Date of Birth", "placeholder": "Select your birth date", "value": "" },
+          { "type": "color", "id": "color", "name": "Favorite Color", "placeholder": "Pick a color", "value": "#000000" },
+          { "type": "textarea", "id": "bio", "name": "Bio", "placeholder": "Write something about yourself", "value": "" },
+          { "type": "checkbox", "id": "terms", "name": "Agree to Terms", "value": false, "isChecked": false },
+          {
+            "type": "radio",
+            "id": "gender",
+            "name": "Gender",
+            "options": [{ "title": "Male", "value": "male" }, { "title": "Female", "value": "female" }],
+            "selectedValue": ""
+          },
+          {
+            "type": "select",
+            "id": "country",
+            "name": "Country",
+            "placeholder": "Select your country",
+            "options": [{ "label": "USA", "value": "usa" }, { "label": "Canada", "value": "canada" }],
+            "value": ""
+          },
+          {
+            "type": "multiSelect",
+            "id": "languages",
+            "name": "Languages",
+            "placeholder": "Select languages you know",
+            "options": [
+              { "label": "English", "value": "english" },
+              { "label": "Spanish", "value": "spanish" },
+              { "label": "French", "value": "french" }
+            ],
+            "selectedValues": []
+          },
+          { "type": "file", "id": "profile", "name": "Profile Picture", "title": "Upload your profile picture", "allowedTypes": [".jpg", ".png"] },
+          { "type": "submit", "id": "submit", "name": "Submit" },
+          { "type": "reset", "id": "reset", "name": "Reset" }
+        ]
+      }
+    }
+  ]
+}

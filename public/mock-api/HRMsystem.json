@@ -1,0 +1,26 @@
+{
+    "pageTitle": "HRM System",
+    "components": [
+      {
+        "type": "form",
+        "config": {
+          "fields": [
+            { "type": "text", "id": "employeeId", "name": "Employee ID", "placeholder": "Enter employee ID" },
+            { "type": "text", "id": "employeeName", "name": "Employee Name", "placeholder": "Enter employee name" },
+            { "type": "select", "id": "department", "name": "Department", "options": [{ "HR": "hr" }, { "IT": "it" }, { "Finance": "finance" }] },
+            { "type": "date", "id": "joinDate", "name": "Joining Date" },
+            { "type": "submit", "id": "submit", "name": "Submit" }
+          ]
+        }
+      },
+      {
+        "type": "chart",
+        "config": {
+          "title": "Employee Demographics",
+          "type": "pie",
+          "dataEndpoint": "/mock-api/hrm-employee-demographics.json"
+        }
+      }
+    ]
+  }
+  

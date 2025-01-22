@@ -1,0 +1,10 @@
+{
+  "columns": [
+    { "title": "Reservation No", "name": "reservation_no" },
+    { "title": "Guest Name", "name": "guest_name" }
+  ],
+  "rows": [
+    { "reservation_no": "RES0001", "guest_name": "John Doe" },
+    { "reservation_no": "RES0002", "guest_name": "Jane Smith" }
+  ]
+}

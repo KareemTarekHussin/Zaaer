@@ -1,18 +1,14 @@
-import React from "react";
-
-interface SubmitButtonProps {
-  label: string;
-  onClick?: () => void;
-}
-
-const SubmitButton: React.FC<SubmitButtonProps> = ({ label, onClick }) => {
+const SubmitButton: React.FC<{
+  id: string;
+  name: string;
+}> = ({ id, name }) => {
   return (
     <button
+      id={id}
       type="submit"
-      onClick={onClick}
-      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
     >
-      {label}
+      {name}
     </button>
   );
 };

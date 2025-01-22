@@ -1,0 +1,22 @@
+{
+    "pageTitle": "Dashboard",
+    "components": [
+      {
+        "type": "chart",
+        "config": {
+          "title": "Reservation Purpose Breakdown",
+          "type": "pie",
+          "dataEndpoint": "/mock-api/reservation_purpose_chart.json"
+        }
+      },
+      {
+        "type": "chart",
+        "config": {
+          "title": "Guest Types Distribution",
+          "type": "bar",
+          "dataEndpoint": "/mock-api/guest_types_chart.json"
+        }
+      }
+    ]
+  }
+  

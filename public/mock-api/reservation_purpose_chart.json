@@ -1,0 +1,5 @@
+{
+    "labels": ["Tourism", "Business", "Others"],
+    "values": [120, 80, 30],
+    "colors": ["#4caf50", "#f44336", "#2196f3"]
+  }

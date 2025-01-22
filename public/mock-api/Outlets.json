@@ -1,0 +1,24 @@
+{
+  "pageTitle": "Outlets",
+  "components": [
+    {
+      "type": "filter",
+      "config": {
+        "fields": [
+          { "type": "text", "id": "outletName", "name": "Outlet Name", "placeholder": "Enter outlet name" },
+          { "type": "select", "id": "location", "name": "Location", "placeholder": "Select location", "options": [{ "label": "North Wing", "value": "north" }, { "label": "South Wing", "value": "south" }] }
+        ]
+      }
+    },
+    {
+      "type": "list",
+      "config": {
+        "endpoint": "/mock-api/reservations-data.json",
+        "filters": [
+          { "type": "text", "name": "outletName", "title": "Outlet Name" },
+          { "type": "select", "name": "location", "title": "Location", "options": [{ "label": "North Wing", "value": "north" }, { "label": "South Wing", "value": "south" }] }
+        ]
+      }
+    }
+  ]
+}

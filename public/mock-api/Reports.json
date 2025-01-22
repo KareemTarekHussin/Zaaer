@@ -1,0 +1,23 @@
+{
+    "pageTitle": "Reports",
+    "components": [
+      {
+        "type": "filter",
+        "config": {
+          "fields": [
+            { "type": "date", "id": "startDate", "name": "Start Date" },
+            { "type": "date", "id": "endDate", "name": "End Date" }
+          ]
+        }
+      },
+      {
+        "type": "chart",
+        "config": {
+          "title": "Report Overview",
+          "type": "bar",
+          "dataEndpoint": "/mock-api/reports-overview.json"
+        }
+      }
+    ]
+  }
+  

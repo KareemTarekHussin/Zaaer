@@ -1,0 +1,59 @@
+{
+    "pageTitle": "Finance Dashboard",
+    "components": [
+      {
+        "type": "filter",
+        "config": {
+          "fields": [
+            { "type": "text", "id": "accountNumber", "name": "Account Number", "placeholder": "Enter account number" },
+            { "type": "select", "id": "transactionType", "name": "Transaction Type", "placeholder": "Select transaction type", "options": [{ "label": "Credit", "value": "credit" }, { "label": "Debit", "value": "debit" }] },
+            { "type": "date", "id": "startDate", "name": "Start Date" },
+            { "type": "date", "id": "endDate", "name": "End Date" }
+          ]
+        }
+      },
+      {
+        "type": "form",
+        "config": {
+          "fields": [
+            { "type": "text", "id": "transactionId", "name": "Transaction ID", "placeholder": "Enter transaction ID", "value": "" },
+            { "type": "number", "id": "amount", "name": "Amount", "placeholder": "Enter amount", "value": "" },
+            { "type": "textarea", "id": "notes", "name": "Notes", "placeholder": "Enter notes", "value": "" },
+            { "type": "date", "id": "transactionDate", "name": "Transaction Date", "placeholder": "Select transaction date", "value": "" },
+            { "type": "select", "id": "currency", "name": "Currency", "placeholder": "Select currency", "options": [{ "label": "USD", "value": "usd" }, { "label": "EUR", "value": "eur" }] },
+            { "type": "checkbox", "id": "confirm", "name": "Confirm Transaction", "value": "", "isChecked": false },
+            { "type": "submit", "id": "submit", "name": "Submit" },
+            { "type": "reset", "id": "reset", "name": "Reset" }
+          ]
+        }
+      },
+      {
+        "type": "list",
+        "config": {
+          "endpoint": "/mock-api/outlets-data.json",
+          "filters": [
+            { "type": "text", "name": "outletName", "title": "Outlet Name" },
+            { "type": "select", "name": "location", "title": "Location", "options": [{ "label": "North Wing", "value": "north" }, { "label": "South Wing", "value": "south" }] }
+          ]
+        }
+      },
+      {
+        "type": "chart",
+        "config": {
+          "charts": [
+            {
+              "title": "Monthly Revenue",
+              "type": "bar",
+              "dataEndpoint": "/mock-api/finance-chart-data.json"
+            },
+            {
+              "title": "Expense Breakdown",
+              "type": "pie",
+              "dataEndpoint": "/mock-api/finance-expense-chart.json"
+            }
+          ]
+        }
+      }
+    ]
+  }
+  

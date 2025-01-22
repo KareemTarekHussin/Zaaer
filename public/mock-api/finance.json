@@ -1,0 +1,22 @@
+{
+  "pageTitle": "Finance",
+  "components": [
+    {
+      "type": "chart",
+      "config": {
+        "charts": [
+          {
+            "title": "Monthly Revenue",
+            "type": "bar",
+            "dataEndpoint": "/mock-api/finance-chart-data.json"
+          },
+          {
+            "title": "Expense Breakdown",
+            "type": "pie",
+            "dataEndpoint": "/mock-api/finance-expense-chart.json"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+
+          {
+            "columns": [
+                { "title": "Name", "name": "name" },
+                { "title": "Status", "name": "status" }
+            ],
+            "rows": [
+                { "name": "John Doe", "status": "Active" },
+                { "name": "Jane Smith", "status": "Inactive" }
+            ]
+          }

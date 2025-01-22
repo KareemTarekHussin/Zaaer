@@ -1,0 +1,52 @@
+{
+    "pageTitle": "Reports",
+    "components": [
+      {
+        "type": "list",
+        "config": {
+          "endpoint": "/api/v1/report/reservations_report",
+          "filters": [
+            {
+              "name": "unit_title",
+              "title": "Unit Title",
+              "type": "select",
+              "options": [
+                { "label": "Single Room", "value": "Single Room" },
+                { "label": "Double Room", "value": "Double Room" }
+              ]
+            },
+            {
+              "name": "guest_id",
+              "title": "Guest ID",
+              "type": "text"
+            }
+          ],
+          "columns": [
+            { "name": "reservation_no", "title": "Reservation No" },
+            { "name": "guest_name", "title": "Guest Name" },
+            { "name": "unit_title", "title": "Unit Title" },
+            { "name": "nights_count", "title": "Nights Count" }
+          ]
+        }
+      },
+      {
+        "type": "chart",
+        "config": {
+          "title": "Reservations by Types",
+          "type": "doughnut",
+          "dataEndpoint": "/api/v1/dashboard/reservations_by_type_chart",
+          "filters": [
+            {
+              "name": "unit_title",
+              "title": "Unit Title",
+              "type": "select",
+              "options": [
+                { "label": "Single Room", "value": "Single Room" },
+                { "label": "Double Room", "value": "Double Room" }
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }

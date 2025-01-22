@@ -1,0 +1,22 @@
+{
+    "title": "Dashboard Example",
+    "charts": [
+      {
+        "type": "bar",
+        "title": "Revenue by Month",
+        "data": {
+          "labels": ["January", "February", "March", "April"],
+          "values": [1000, 1200, 800, 1500]
+        }
+      },
+      {
+        "type": "line",
+        "title": "Customer Growth",
+        "data": {
+          "labels": ["January", "February", "March", "April"],
+          "values": [50, 75, 100, 125]
+        }
+      }
+    ]
+  }
+  

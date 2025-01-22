@@ -1,230 +1,215 @@
-import { Menu, MenuButton, MenuItem, MenuItems, Popover, PopoverButton, PopoverPanel } from '@headlessui/react'
-import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import sidebarfull from '../../../assets/Images/icons/sidebar-full.svg'
-// import { useTranslation } from "react-i18next";
-import Button from '../Buttons/Buttons';
-// import i18n from '../../../i18n/i18n';
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
+// Full Navbar with Two Distinct Sections and Sticky Mobile Footer
 
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { Bars3Icon, ChevronDownIcon, PlusIcon, BellIcon, BuildingOfficeIcon } from "@heroicons/react/24/outline";
+import Sidebar from "../SideBars/Sidebar"; // Assuming your Sidebar component is here
+import logo from "../../../assets/Images/icons/sidebar-full.svg"
+const Navbar: React.FC = () => {
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
+  const [showMore, setShowMore] = useState(false);
+  const [createDropdownOpen, setCreateDropdownOpen] = useState(false);
+  const [tibaDropdownOpen, setTibaDropdownOpen] = useState(false);
+  const [isCollapsed, setIsCollapse] = useState(false);   // Desktop sidebar collapse
+  const modules = [
+    { name: "Admin", href: "/admin" },
+    { name: "Reservations", href: "/reservations" },
+    { name: "HRMS", href: "/hrms" },
+    { name: "Housekeeping", href: "/housekeeping" },
+    { name: "Outlets", href: "/outlets" },
+    { name: "Finance", href: "/finance" },
+    { name: "Reports", href: "/reports" },
+  ];
 
-const user = {
-  name: 'Chelsea Hagon',
-  email: 'chelsea.hagon@example.com',
-  imageUrl:
-    'https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-}
-const initialNavigation = [
-  { name: 'Admin', href: '/admin', current: true },
-  { name: 'Reservations', href: '/reservations', current: false },
-  { name: 'HRM System', href: '/HRMSystem', current: false },
-  { name: 'Housekeeping', href: '/housekeeping', current: false },
-  { name: 'Outlets', href: '/outlets', current: false },
-  { name: 'Finance', href: '/finance', current: false },
-  { name: 'Reports', href: '/reports', current: false },
-]
-const userNavigation = [
-  { name: 'Your Profile', href: '#' },
-  { name: 'Settings', href: '#' },
-  { name: 'Sign out', href: '#' },
-]
+  const visibleModules = modules.slice(0, 4);
+  const hiddenModules = modules.slice(4);
 
-function classNames(...classes:any) {
-  return classes.filter(Boolean).join(' ')
-}
+  const createNewOptions = [
+    { label: "New Booking", action: () => alert("New Booking") },
+    { label: "New Report", action: () => alert("New Report") },
+  ];
 
-export default function NavBar() {
-  // const changeLanguage = (lng:any) => {
-  //   i18n.changeLanguage(lng);
-  //   console.log(`Language changed to: ${lng}`); // Debug log
-  // };
-  // const { t , i18n }=useTranslation();
-
-  const [navigation, setNavigation] = useState(initialNavigation); // Set initial active route
-
-  const handleNavigationClick = (href: string) => {
-    setNavigation((prev) =>
-      prev.map((item) =>
-        item.href === href
-          ? { ...item, current: true }
-          : { ...item, current: false }
-      )
-    );
-  };
   return (
-    
     <>
-    
-      {/* When the mobile menu is open, add `overflow-hidden` to the `body` element to prevent double scrollbars */}
-      <Popover
-        as="header"
-        className="bg-white shadow-sm data-[open]:fixed data-[open]:inset-0 data-[open]:z-40 data-[open]:overflow-y-auto lg:static lg:overflow-y-visible data-[open]:lg:static data-[open]:lg:overflow-y-visible"
-      >
+      {/* Main Navbar */}
+      <header className="bg-white  sticky top-0 z-10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="relative flex justify-between lg:gap-8 xl:grid xl:grid-cols-12">
-            <div className="flex md:absolute md:inset-y-0 md:left-0 lg:static xl:col-span-2">
-              <div className="flex shrink-0 items-center">
-                <a href="#"
-                //TODO:go to home after clicking image
-                >
-                <Link to={"/admin"}>
-                <img
-          className="h-8 w-auto flex justify-center"
-          src={sidebarfull}
-          alt="Your Company"
-        />
-                </Link>
-                
-                </a>
-              </div>
-            </div>
-            <div className="min-w-0 flex-1 md:px-8 lg:px-0 xl:col-span-6">
-              <div className="flex items-center px-6 py-4 md:mx-auto md:max-w-3xl lg:mx-0 lg:max-w-none xl:px-0">
-                <div className="grid w-full grid-cols-1">
-                  <input
-                    name="search"
-                    type="search"
-                    placeholder="Search"
-                    className="col-start-1 row-start-1 block w-full rounded-md bg-white py-1.5 pl-10 pr-3 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                  />
-                  <MagnifyingGlassIcon
-                    aria-hidden="true"
-                    className="pointer-events-none col-start-1 row-start-1 ml-3 size-5 self-center text-gray-400"
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="flex items-center md:absolute md:inset-y-0 md:right-0 lg:hidden">
-              {/* Mobile menu button */}
-              <PopoverButton className="group relative -mx-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
-                <span className="absolute -inset-0.5" />
-                <span className="sr-only">Open menu</span>
-                <Bars3Icon aria-hidden="true" className="block size-6 group-data-[open]:hidden" />
-                <XMarkIcon aria-hidden="true" className="hidden size-6 group-data-[open]:block" />
-              </PopoverButton>
-            </div>
-            <div className="hidden lg:flex lg:items-center lg:justify-end xl:col-span-4">
+          <div className="flex items-center justify-between py-4">
+            {/* Left Section: Logo & Sidebar Toggle */}
+            <div className="flex items-center gap-x-4">
               <button
-                type="button"
-                className="relative ml-5 shrink-0 rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                className="lg:hidden p-2 text-gray-500 hover:text-gray-700"
+                onClick={() => setSidebarOpen(true)}
               >
-                <span className="absolute -inset-1.5" />
-                <span className="sr-only">View notifications</span>
-                <BellIcon aria-hidden="true" className="size-6" />
+                <Bars3Icon className="h-6 w-6" />
+              </button>
+              <Link to="/" className="hidden lg:flex items-center gap-x-2">
+                <img src={logo} alt="ZAAER PMS" className="h-8 w-auto" />
+              </Link>
+            </div>
+
+            {/* Right Section: Actions */}
+            <div className="flex items-center gap-x-4">
+              {/* Create New Button */}
+              <div className="relative">
+                <button
+                  className="hidden lg:inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-blue-600 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                  onClick={() => setCreateDropdownOpen(!createDropdownOpen)}
+                >
+                  <PlusIcon className="h-5 w-5 text-blue-600" aria-hidden="true" />
+                  <span>Create New</span>
+                  <ChevronDownIcon
+                    className="ml-1.5 h-5 w-5 text-gray-400"
+                    aria-hidden="true"
+                  />
+                </button>
+                <button
+                  className="lg:hidden inline-flex items-center justify-center rounded-md bg-white px-2 py-2 text-gray-700 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                  onClick={() => setCreateDropdownOpen(!createDropdownOpen)}
+                >
+                  <PlusIcon className="h-5 w-5 text-blue-600" aria-hidden="true" />
+                  <ChevronDownIcon
+                    className="ml-1 h-5 w-5 text-gray-400"
+                    aria-hidden="true"
+                  />
+                </button>
+                {createDropdownOpen && (
+                  <div className="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    {createNewOptions.map((option, index) => (
+                      <button
+                        key={index}
+                        onClick={option.action}
+                        className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >
+                        {option.label}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Notifications */}
+              <button className="relative p-2 rounded-full text-gray-500 hover:text-gray-700">
+                <BellIcon className="h-6 w-6" />
+                <span className="absolute top-0 right-0 -mt-1 -mr-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-red-600 text-white text-xs font-bold">
+                  99+
+                </span>
               </button>
 
-              {/* Profile dropdown */}
-              <Menu as="div" className="relative ml-5 shrink-0">
-                <div>
-                  <MenuButton className="relative flex rounded-full bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                    <span className="absolute -inset-1.5" />
-                    <span className="sr-only">Open user menu</span>
-                    <img alt="" src={user.imageUrl} className="size-8 rounded-full" />
-                  </MenuButton>
-                </div>
-                <MenuItems
-                  transition
-                  className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
+              {/* Tiba International Dropdown */}
+              <div className="relative">
+                <button
+                  className="hidden lg:inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-700 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                  onClick={() => setTibaDropdownOpen(!tibaDropdownOpen)}
                 >
-                  {userNavigation.map((item) => (
-                    <MenuItem key={item.name}>
-                      <a
-                        href={item.href}
-                        className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:outline-none"
-                      >
-                        {item.name}
-                      </a>
-                    </MenuItem>
-                  ))}
-                </MenuItems>
-              </Menu>
-
-              <a
-                href="#"
-                className="ml-6 inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              >
-                New Project
-              </a>
-             {/*
-              {i18n.language === "ar" ? (
-                <Button className="mx-2 border-2" onClick={() => changeLanguage("en")}>En</Button>
-              ) : (
-                <Button className="mx-2 border-2" onClick={() => changeLanguage("ar")}>Ar</Button>
-              )} */}
-            </div>
-            
-          </div>
-          {/* second navigation bar for navigation in modules */}
-          <nav aria-label="Global" className="hidden lg:flex lg:space-x-10 lg:py-2">
-          {navigation.map((item) => (
-        <Link
-          key={item.name}
-          to={item.href}
-          aria-current={item.current ? 'page' : undefined}
-          onClick={() => handleNavigationClick(item.href)}
-          className={classNames(
-            item.current
-              ? 'bg-gray-100 text-gray-900'
-              : 'text-gray-900 hover:bg-gray-50 hover:text-gray-900',
-            'inline-flex items-center rounded-md px-3 py-2 text-sm font-medium'
-          )}
-        >
-          {item.name}
-        </Link>
-      ))}
-        </nav>
-           {/* second navigation bar for navigation in modules */}
-        </div>
-
-        <PopoverPanel as="nav" aria-label="Global" className="lg:hidden">
-          <div className="mx-auto max-w-3xl space-y-1 px-2 pb-3 pt-2 sm:px-4">
-            {navigation.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                aria-current={item.current ? 'page' : undefined}
-                className={classNames(
-                  item.current ? 'bg-gray-100 text-gray-900' : 'hover:bg-gray-50',
-                  'block rounded-md px-3 py-2 text-base font-medium',
+                  <span>Tiba International</span>
+                  <BuildingOfficeIcon className="ml-2 h-5 w-5 text-gray-400" aria-hidden="true" />
+                </button>
+                <button
+                  className="lg:hidden inline-flex items-center justify-center rounded-md bg-white px-2 py-2 text-gray-700 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                  onClick={() => setTibaDropdownOpen(!tibaDropdownOpen)}
+                >
+                  <BuildingOfficeIcon className="h-6 w-6 text-gray-700" aria-hidden="true" />
+                </button>
+                {tibaDropdownOpen && (
+                  <div className="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <div className="p-4">
+                      <input
+                        type="text"
+                        placeholder="Search branch"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-1 focus:ring-blue-500 focus:outline-none"
+                      />
+                    </div>
+                    <button className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                      Tiba International - Mecca, Saudi Arabia
+                    </button>
+                  </div>
                 )}
+              </div>
+
+              {/* Profile Picture */}
+              <div className="h-10 w-10 rounded-full bg-gray-300 overflow-hidden">
+                <img src="/profile.jpg" alt="Profile" className="h-full w-full object-cover" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {/* Second Navbar Below Main Navbar */}
+      <nav className="bg-white drop-shadow-xl hidden lg:block z-100 sticky">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ">
+          <div className="flex space-x-20 py-2">
+            {modules.map((module) => (
+              <Link
+                key={module.name}
+                to={module.href}
+                className="text-sm font-medium text-gray-900 hover:text-indigo-600"
               >
-                {item.name}
-              </a>
+                {module.name}
+              </Link>
             ))}
           </div>
-          <div className="border-t border-gray-200 pb-3 pt-4">
-            <div className="mx-auto flex max-w-3xl items-center px-4 sm:px-6">
-              <div className="shrink-0">
-                <img alt="" src={user.imageUrl} className="size-10 rounded-full" />
+        </div>
+      </nav>
+
+      {/* Sticky Footer for Mobile */}
+      <nav className="fixed inset-x-0 bottom-0 z-20 flex justify-around bg-white py-3 shadow-lg lg:hidden">
+        {visibleModules.map((module) => (
+          <Link
+            key={module.name}
+            to={module.href}
+            className="flex flex-col items-center space-y-1 text-sm text-gray-700 hover:text-indigo-600"
+          >
+            <Bars3Icon className="h-6 w-6" />
+            <span>{module.name}</span>
+          </Link>
+        ))}
+        {hiddenModules.length > 0 && (
+          <div className="relative">
+            <button
+              onClick={() => setShowMore(!showMore)}
+              className="flex flex-col items-center space-y-1 text-sm text-gray-700 hover:text-indigo-600"
+            >
+              <Bars3Icon className="h-6 w-6" />
+              <span>More</span>
+            </button>
+            {showMore && (
+              <div className="absolute bottom-full mb-2 w-40 bg-white border rounded shadow-lg">
+                {hiddenModules.map((module) => (
+                  <Link
+                    key={module.name}
+                    to={module.href}
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  >
+                    {module.name}
+                  </Link>
+                ))}
               </div>
-              <div className="ml-3">
-                <div className="text-base font-medium text-gray-800">{user.name}</div>
-                <div className="text-sm font-medium text-gray-500">{user.email}</div>
-              </div>
-              <button
-                type="button"
-                className="relative ml-auto shrink-0 rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-              >
-                <span className="absolute -inset-1.5" />
-                <span className="sr-only">View notifications</span>
-                <BellIcon aria-hidden="true" className="size-6" />
-              </button>
-            </div>
-            <div className="mx-auto mt-3 max-w-3xl space-y-1 px-2 sm:px-4">
-              {userNavigation.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900"
-                >
-                  {item.name}
-                </a>
-              ))}
-            </div>
+            )}
           </div>
-        </PopoverPanel>
-      </Popover>
+        )}
+      </nav>
+{/* TODO:when entering from mobile to desktop the sidebar is showing it should be hidden */}
+      {/* Sidebar Logic */}
+      {isSidebarOpen && (
+         <Sidebar
+         isCollapsed={isCollapsed}
+         setIsCollapse={setIsCollapse}
+         isSidebarOpen={isSidebarOpen}
+         setSidebarOpen={setSidebarOpen}
+       />
+      )}
+
+      {/* Fix for Full-Screen Issue */}
+      <style>{`
+        body {
+          margin: 0;
+          overflow-x: hidden;
+        }
+      `}</style>
     </>
-  )
-}
+  );
+};
+
+export default Navbar;

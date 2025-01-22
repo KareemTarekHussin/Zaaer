@@ -8,6 +8,7 @@ import ReportPage from './pages/ReportPage';
 import CustomPage from './pages/CustomPage';
 import ProtectedRoute from './components/SharedModule/ProtectedRoute/ProtectedRoute';
 import MasterLayout from './components/SharedModule/MasterLayout/MasterLayout';
+import DynamicPage from './pages/DynamicPage';
 
 const App: React.FC = () => {
   return (
@@ -29,6 +30,7 @@ const App: React.FC = () => {
           <Route path="/listview/:entity" element={<ListViewPage />} />
           <Route path="/report/:reportType" element={<ReportPage />} />
           <Route path="/custom/:pageName" element={<CustomPage />} />
+          <Route path="/dynamic/:pageName" element={<DynamicPage />} />
         </Route>
 
       

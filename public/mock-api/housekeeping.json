@@ -1,0 +1,25 @@
+{
+    "pageTitle": "Housekeeping",
+    "components": [
+      {
+        "type": "filter",
+        "config": {
+          "fields": [
+            { "type": "text", "id": "roomNumber", "name": "Room Number", "placeholder": "Enter room number" },
+            { "type": "select", "id": "status", "name": "Status", "placeholder": "Select status", "options": [{ "label": "Clean", "value": "clean" }, { "label": "Dirty", "value": "dirty" }] }
+          ]
+        }
+      },
+      {
+        "type": "list",
+        "config": {
+          "endpoint": "/mock-api/housekeeping-data.json",
+          "filters": [
+            { "type": "text", "name": "roomNumber", "title": "Room Number" },
+            { "type": "select", "name": "status", "title": "Status", "options": [{ "label": "Clean", "value": "clean" }, { "label": "Dirty", "value": "dirty" }] }
+          ]
+        }
+      }
+    ]
+  }
+  
