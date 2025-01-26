@@ -1,11 +1,19 @@
-
-          {
-            "columns": [
-                { "title": "Name", "name": "name" },
-                { "title": "Status", "name": "status" }
-            ],
-            "rows": [
-                { "name": "John Doe", "status": "Active" },
-                { "name": "Jane Smith", "status": "Inactive" }
-            ]
-          }
+{
+  "columns": [
+    { "title": "Name",   "name": "name" },
+    { "title": "Status", "name": "status" }
+  ],
+  "rows": [
+    { "name": "John Doe",  "status": "Active" },
+    { "name": "Jane Doe",  "status": "Inactive" },
+    { "name": "Alice",     "status": "Active" },
+    { "name": "Bob",       "status": "Inactive" },
+    { "name": "Bob",       "status": "Inactive" },
+    { "name": "Bob",       "status": "Inactive" },
+    { "name": "Bob",       "status": "Inactive" },
+    { "name": "Bob",       "status": "Inactive" },
+    { "name": "Bob",       "status": "Inactive" },
+    { "name": "Bob",       "status": "Inactive" },
+    { "name": "Bob",       "status": "Inactive" }
+  ]
+}
