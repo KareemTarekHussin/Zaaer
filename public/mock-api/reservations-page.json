@@ -1,0 +1,44 @@
+{
+  "pageTitle": "Reservations Management",
+  "components": [
+    {
+      "type": "filter",
+      "config": {
+        "fields": [
+          {
+            "type": "text",
+            "name": "search_name",
+            "id": "reservation-list-search_name",
+            "title": "Search by Guest Name",
+            "placeholder": "Enter guest name"
+          },
+          {
+            "type": "select",
+            "name": "room_type",
+            "id": "reservation-list-room_type",
+            "title": "Room Type",
+            "options": [
+              { "label": "Single", "value": "single" },
+              { "label": "Double", "value": "double" },
+              { "label": "Deluxe", "value": "deluxe" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "list",
+      "config": {
+        "columns": [
+          { "title": "Reservation No", "name": "reservation_no" },
+          { "title": "Guest Name",     "name": "guest_name" }
+        ],
+        "rows": [
+          { "reservation_no": "RES0001", "guest_name": "Guest 1" },
+          { "reservation_no": "RES0002", "guest_name": "Guest 2" }
+        ],
+        "totalPages": 1
+      }
+    }
+  ]
+}

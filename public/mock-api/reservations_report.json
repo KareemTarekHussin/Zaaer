@@ -1,0 +1,92 @@
+{
+    "filters": [
+      {
+        "name": "unit_title",
+        "title": "Unit Title",
+        "id": "reservation-unit-unit_title",
+        "type": "select",
+        "options": [
+          { "1": "single Room" },
+          { "2": "Double Room" }
+        ],
+        "value": "",
+        "mandatory": 1,
+        "depends_on": ""
+      },
+      {
+        "name": "guest_id",
+        "title": "Guest ID",
+        "id": "reservation-guest-guest_id",
+        "type": "text",
+        "options": [],
+        "value": "",
+        "mandatory": 1,
+        "depends_on": ""
+      }
+    ],
+    "columns": [
+      { "title": "Reservation No", "name": "reservation_no" },
+      { "title": "Guest Name",     "name": "guest_name" }
+    ],
+    "rows": [
+      { "reservation_no": "RES0001", "guest_name": "Guest 1" },
+      { "reservation_no": "RES0002", "guest_name": "Guest 2" }
+    ],
+    "charts": [
+      {
+        "width": "full",
+        "title": "Chart 1",
+        "name": "reservations_group_by_types",
+        "type": "pie",
+        "data": [
+          { "type": "Type 1", "value": 100 }
+        ],
+        "filters": {
+          "url": "{{BASE_URL}}/api/v1/dashboard/{{dashboard_name}}/",
+          "inputs": [
+            {
+              "name": "unit_title",
+              "title": "Unit Title",
+              "id": "reservation-unit-unit_title",
+              "type": "select",
+              "options": [
+                { "1": "single Room" },
+                { "2": "Double Room" }
+              ],
+              "value": "",
+              "mandatory": 1,
+              "depends_on": ""
+            }
+          ]
+        }
+      },
+      {
+        "width": "half",
+        "title": "Chart 2",
+        "name": "reservations_group_by_ay_7aga",
+        "type": " doughnut ",
+        "data": [
+          { "type": "Type 1", "value": 100 }
+        ],
+        "filters": {
+          "url": "{{BASE_URL}}/api/v1/dashboard/{{dashboard_name}}/",
+          "inputs": [
+            {
+              "name": "unit_title",
+              "title": "Unit Title",
+              "id": "reservation-unit-unit_title",
+              "type": "select",
+              "options": [
+                { "1": "single Room" },
+                { "2": "Double Room" }
+              ],
+              "value": "",
+              "mandatory": 1,
+              "depends_on": ""
+            }
+          ]
+        }
+      }
+    ]
+  }
+  

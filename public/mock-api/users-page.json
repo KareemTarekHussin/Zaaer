@@ -1,0 +1,35 @@
+{
+    "pageTitle": "User Management",
+    "components": [
+      {
+        "type": "filter",
+        "config": {
+          "fields": [
+            {
+              "type": "text",
+              "name": "username",
+              "title": "User Name",
+              "id": "user-filter-username",
+              "placeholder": "Filter by name"
+            }
+          ]
+        }
+      },
+      {
+        "type": "list",
+        "config": {
+          "columns": [
+            { "title": "Username", "name": "username" },
+            { "title": "Email",    "name": "email" }
+          ],
+          "rows": [
+            { "username": "Alice", "email": "alice@example.com" },
+            { "username": "Bob",   "email": "bob@example.com" },
+            { "username": "Eve",   "email": "eve@example.com" }
+          ],
+          "filters": {}     
+        }
+      }
+    ]
+  }
+  

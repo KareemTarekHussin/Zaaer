@@ -1,0 +1,59 @@
+{
+    "sidebar": [
+      {
+        "title": "Dashboard",
+        "link": "/dashboard",
+        "icon": "dashboard",
+        "children": []
+      },  
+      {
+        "title": "Reservation",
+        "icon": "calendar",
+        "children": [
+          {
+            "title": "New Reservation",
+            "link": "/form/reservation/new",
+            "children": []
+          },
+          {
+            "title": "List Reservations",
+            "link": "/listview/reservation",
+            "children": []
+          }
+        ]
+      },
+      {
+        "title": "Guests",
+        "icon": "users",
+        "children": [
+          {
+            "title": "New Guest",
+            "link": "/form/guest/new",
+            "children": []
+          },
+          {
+            "title": "List Guests",
+            "link": "/listview/guest",
+            "children": []
+          }
+        ]
+      },
+      {
+        "title": "Settings",
+        "icon": "gear",
+        "children": [
+          {
+            "title": "Users",
+            "link": "/admin/users",
+            "children": []
+          },
+          {
+            "title": "Roles",
+            "link": "/admin/roles",
+            "children": []
+          }
+        ]
+      }
+    ]
+  }
+  

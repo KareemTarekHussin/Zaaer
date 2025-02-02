@@ -57,7 +57,13 @@ const DynamicPage: React.FC = () => {
               />
             );
           case "list":
-            return <ListView key={index} {...component.config} filters={filterValues} />;
+            return <ListView
+            key={index}
+            columns={component.config.columns || []}
+            rows={component.config.rows || []}
+            totalPages={component.config.totalPages || 1}
+            filters={filterValues}
+            />;
           case "chart":
             return component.config.charts.map((chartConfig: any, chartIndex: number) => (
               <ChartComponent
@@ -69,7 +75,7 @@ const DynamicPage: React.FC = () => {
               />
             ));
           case "form":
-            return <Form key={index} {...component.config} />;
+            return <Form key={index} fields={component.config.fields}  formKey="megaForm"/>;
           default:
             return <p key={index}>Unknown component type: {component.type}</p>;
         }

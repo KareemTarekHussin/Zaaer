@@ -1,16 +1,33 @@
-// Full Navbar with Two Distinct Sections and Sticky Mobile Footer
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Bars3Icon, ChevronDownIcon, PlusIcon, BellIcon, BuildingOfficeIcon } from "@heroicons/react/24/outline";
-import Sidebar from "../SideBars/Sidebar"; // Assuming your Sidebar component is here
-import logo from "../../../assets/Images/icons/sidebar-full.svg"
-const Navbar: React.FC = () => {
-  const [isSidebarOpen, setSidebarOpen] = useState(false);
+import {
+  Bars3Icon,
+  ChevronDownIcon,
+  PlusIcon,
+  BellIcon,
+  BuildingOfficeIcon,
+} from "@heroicons/react/24/outline";
+import logo from "../../../assets/Images/icons/sidebar-full.svg";
+
+// 1) Define props for the Navbar
+interface NavbarProps {
+  isCollapsed: boolean;
+  setIsCollapse: React.Dispatch<React.SetStateAction<boolean>>;
+  isSidebarOpen: boolean;
+  setSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Navbar: React.FC<NavbarProps> = ({
+  isCollapsed,
+  setIsCollapse,
+  isSidebarOpen,
+  setSidebarOpen,
+}) => {
+  // Local states for dropdowns
   const [showMore, setShowMore] = useState(false);
   const [createDropdownOpen, setCreateDropdownOpen] = useState(false);
   const [tibaDropdownOpen, setTibaDropdownOpen] = useState(false);
-  const [isCollapsed, setIsCollapse] = useState(false);   // Desktop sidebar collapse
+//static for now but will be dynamic
   const modules = [
     { name: "Admin", href: "/admin" },
     { name: "Reservations", href: "/reservations" },
@@ -32,26 +49,30 @@ const Navbar: React.FC = () => {
   return (
     <>
       {/* Main Navbar */}
-      <header className="bg-white  sticky top-0 z-10">
+      <div className="">
+      <header className="bg-white sticky top-0 z-10 ">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between py-4">
-            {/* Left Section: Logo & Sidebar Toggle */}
+            {/* Left Section: Logo & Mobile Sidebar Toggle */}
             <div className="flex items-center gap-x-4">
+              {/* Show sidebar toggle only on mobile */}
               <button
                 className="lg:hidden p-2 text-gray-500 hover:text-gray-700"
                 onClick={() => setSidebarOpen(true)}
               >
                 <Bars3Icon className="h-6 w-6" />
               </button>
+              {/* Desktop Logo */}
               <Link to="/" className="hidden lg:flex items-center gap-x-2">
                 <img src={logo} alt="ZAAER PMS" className="h-8 w-auto" />
               </Link>
             </div>
 
-            {/* Right Section: Actions */}
+            {/* Right Section: Create, Notifications, Tiba Dropdown, Profile */}
             <div className="flex items-center gap-x-4">
-              {/* Create New Button */}
+              {/* Create New Button + Dropdown */}
               <div className="relative">
+                {/* Desktop button */}
                 <button
                   className="hidden lg:inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-blue-600 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
                   onClick={() => setCreateDropdownOpen(!createDropdownOpen)}
@@ -63,16 +84,16 @@ const Navbar: React.FC = () => {
                     aria-hidden="true"
                   />
                 </button>
+                {/* Mobile button */}
                 <button
                   className="lg:hidden inline-flex items-center justify-center rounded-md bg-white px-2 py-2 text-gray-700 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
                   onClick={() => setCreateDropdownOpen(!createDropdownOpen)}
                 >
                   <PlusIcon className="h-5 w-5 text-blue-600" aria-hidden="true" />
-                  <ChevronDownIcon
-                    className="ml-1 h-5 w-5 text-gray-400"
-                    aria-hidden="true"
-                  />
+                  <ChevronDownIcon className="ml-1 h-5 w-5 text-gray-400" aria-hidden="true" />
                 </button>
+
+                {/* Dropdown */}
                 {createDropdownOpen && (
                   <div className="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                     {createNewOptions.map((option, index) => (
@@ -96,8 +117,9 @@ const Navbar: React.FC = () => {
                 </span>
               </button>
 
-              {/* Tiba International Dropdown */}
+              {/* Tiba International dropdown */}
               <div className="relative">
+                {/* Desktop button */}
                 <button
                   className="hidden lg:inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-700 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
                   onClick={() => setTibaDropdownOpen(!tibaDropdownOpen)}
@@ -105,12 +127,15 @@ const Navbar: React.FC = () => {
                   <span>Tiba International</span>
                   <BuildingOfficeIcon className="ml-2 h-5 w-5 text-gray-400" aria-hidden="true" />
                 </button>
+                {/* Mobile button */}
                 <button
                   className="lg:hidden inline-flex items-center justify-center rounded-md bg-white px-2 py-2 text-gray-700 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
                   onClick={() => setTibaDropdownOpen(!tibaDropdownOpen)}
                 >
                   <BuildingOfficeIcon className="h-6 w-6 text-gray-700" aria-hidden="true" />
                 </button>
+
+                {/* Dropdown */}
                 {tibaDropdownOpen && (
                   <div className="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                     <div className="p-4">
@@ -129,17 +154,17 @@ const Navbar: React.FC = () => {
 
               {/* Profile Picture */}
               <div className="h-10 w-10 rounded-full bg-gray-300 overflow-hidden">
-                <img src="/profile.jpg" alt="Profile" className="h-full w-full object-cover" />
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Profile" className="h-full w-full object-cover" />
               </div>
             </div>
           </div>
         </div>
       </header>
 
-      {/* Second Navbar Below Main Navbar */}
-      <nav className="bg-white drop-shadow-xl hidden lg:block z-100 sticky">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ">
-          <div className="flex space-x-20 py-2">
+      {/* Second Navbar (Desktop) */}
+      <nav className="bg-white  hidden lg:block z-100 sticky ">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 ">
+          <div className="flex space-x-20 py-2 sm:px-10">
             {modules.map((module) => (
               <Link
                 key={module.name}
@@ -152,64 +177,80 @@ const Navbar: React.FC = () => {
           </div>
         </div>
       </nav>
+      </div>
+     
 
       {/* Sticky Footer for Mobile */}
-      <nav className="fixed inset-x-0 bottom-0 z-20 flex justify-around bg-white py-3 shadow-lg lg:hidden">
-        {visibleModules.map((module) => (
-          <Link
-            key={module.name}
-            to={module.href}
-            className="flex flex-col items-center space-y-1 text-sm text-gray-700 hover:text-indigo-600"
-          >
-            <Bars3Icon className="h-6 w-6" />
-            <span>{module.name}</span>
-          </Link>
-        ))}
-        {hiddenModules.length > 0 && (
-          <div className="relative">
-            <button
-              onClick={() => setShowMore(!showMore)}
-              className="flex flex-col items-center space-y-1 text-sm text-gray-700 hover:text-indigo-600"
-            >
-              <Bars3Icon className="h-6 w-6" />
-              <span>More</span>
-            </button>
-            {showMore && (
-              <div className="absolute bottom-full mb-2 w-40 bg-white border rounded shadow-lg">
-                {hiddenModules.map((module) => (
-                  <Link
-                    key={module.name}
-                    to={module.href}
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
-                    {module.name}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
-        )}
-      </nav>
-{/* TODO:when entering from mobile to desktop the sidebar is showing it should be hidden */}
-      {/* Sidebar Logic */}
-      {isSidebarOpen && (
-         <Sidebar
-         isCollapsed={isCollapsed}
-         setIsCollapse={setIsCollapse}
-         isSidebarOpen={isSidebarOpen}
-         setSidebarOpen={setSidebarOpen}
-       />
-      )}
+      <MobileFooter
+        visibleModules={visibleModules}
+        hiddenModules={hiddenModules}
+        showMore={showMore}
+        setShowMore={setShowMore}
+      />
 
-      {/* Fix for Full-Screen Issue */}
-      <style>{`
-        body {
-          margin: 0;
-          overflow-x: hidden;
-        }
-      `}</style>
+      {/* 
+        We don't handle the <Sidebar> here. 
+        MasterLayout passes isSidebarOpen to <Sidebar> 
+        and toggles it. 
+      */}
     </>
   );
 };
 
 export default Navbar;
+
+/** 
+ * A small sub-component for the mobile footer. 
+ * It shows `visibleModules` in the bottom bar, 
+ * and if there are more modules, they go in a popover.
+ */
+function MobileFooter({
+  visibleModules,
+  hiddenModules,
+  showMore,
+  setShowMore,
+}: {
+  visibleModules: { name: string; href: string }[];
+  hiddenModules: { name: string; href: string }[];
+  showMore: boolean;
+  setShowMore: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
+  return (
+    <nav className="fixed inset-x-0 bottom-0 z-20 flex justify-around bg-white py-2 shadow-lg lg:hidden">
+      {visibleModules.map((module) => (
+        <Link
+          key={module.name}
+          to={module.href}
+          className="flex flex-col items-center space-y-1 text-sm text-gray-700 hover:text-indigo-600"
+        >
+          <Bars3Icon className="h-6 w-6" />
+          <span>{module.name}</span>
+        </Link>
+      ))}
+      {hiddenModules.length > 0 && (
+        <div className="relative">
+          <button
+            onClick={() => setShowMore(!showMore)}
+            className="flex flex-col items-center space-y-1 text-sm text-gray-700 hover:text-indigo-600"
+          >
+            <Bars3Icon className="h-6 w-6" />
+            <span>More</span>
+          </button>
+          {showMore && (
+            <div className="absolute bottom-full mb-2 w-40 bg-white border rounded shadow-lg">
+              {hiddenModules.map((module) => (
+                <Link
+                  key={module.name}
+                  to={module.href}
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  {module.name}
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+    </nav>
+  );
+}

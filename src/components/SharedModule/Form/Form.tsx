@@ -9,6 +9,7 @@ import FileInput from "./FileInput";
 import SubmitButton from "./SubmitButton";
 import ResetButton from "./ResetButton";
 import TextArea from "./TextArea";
+import ChildTable from "./ChildTable";
 
 // const Form: React.FC<{ fields: any[] }> = ({ fields }) => {
   const Form: React.FC<{ fields: any[]; formKey: string }> = ({ fields, formKey }) => {
@@ -63,6 +64,8 @@ import TextArea from "./TextArea";
             case "number":
             case "hidden":
             return <Input key={index} {...fieldProps} value={value} register={register} />;
+            case 'child_table':
+      return <ChildTable key={index} {...field} />;
           case "textarea":
             return <TextArea key={index} {...fieldProps} value={value} register={register} />;
           case "checkbox":
