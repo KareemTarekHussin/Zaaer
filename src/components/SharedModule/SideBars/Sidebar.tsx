@@ -7,6 +7,12 @@ import {
   CogIcon,
   HomeIcon
 } from "@heroicons/react/24/outline";
+import {
+  BookOpenCheck,
+  ChevronLeft,
+  ChevronRight
+} from 'lucide-react';
+
 
 interface SidebarItem {
   title: string;
@@ -48,20 +54,21 @@ const Sidebar: React.FC<SidebarProps> = ({
         console.error("Failed to load sidebar data:", err);
       });
   }, []);
-
   return (
     <>
       {/* DESKTOP SIDEBAR */}
       <div
         className={`
-          ${isCollapsed ? "w-16" : "w-64"}
+          ${isCollapsed ? "w-16  px-2" : "w-64  px-4"}
           hidden lg:block
           relative      
           h-screen     
-          bg-white
-          drop-shadow-xl
+         bg-white
+          drop-shadow-sm
+          shadow-2xl
           transition-all
           duration-500
+          
         `}
       >
         {/**
@@ -69,7 +76,7 @@ const Sidebar: React.FC<SidebarProps> = ({
          * We add a bottom padding so items don't overlap the absolute button
          */}
         <div className="overflow-y-auto h-full pb-16">
-          <ul className="py-2 space-y-2">
+          <ul className="pt-5 py-2 space-y-2">
             {items.map((item, idx) => (
               <MenuItem
                 key={idx}
@@ -84,13 +91,16 @@ const Sidebar: React.FC<SidebarProps> = ({
          * 2) COLLAPSE BUTTON pinned at the bottom
          * By using absolute positioning and "bottom-0 w-full"
          */}
-        <div className="absolute bottom-0 w-full  p-2   pb-[120px]">
+        <div className="absolute bottom-0 w-[90%] py-3 px-3 pb-[130px] pl-0 pr-2">
           <button
             onClick={() => setIsCollapse(!isCollapsed)}
-            className="w-full py-1 px-4 border border-[#DBDBDB] rounded-lg hover:bg-gray-200"
+            className="w-full py-2 px-2 border border-[#DBDBDB] rounded-lg hover:bg-[#D9EBFF] flex justify-center items-center transition-all duration-300"
           >
-            {/* TODO:replace with icons */}
-            {isCollapsed ? ">" : "<"}
+            {/* TODO:replace with icons and do flip animation like in design figma*/}
+           <span className={`transition-transform ease-in-out duration-500 ${isCollapsed ? "-rotate-180" : "rotate-0"}`} >
+           {isCollapsed ? <ChevronLeft strokeWidth={1} className="h-5 w-5"/> : <ChevronLeft strokeWidth={1} className="h-5 w-5"/>}
+           </span>
+           
           </button>
         </div>
       </div>
@@ -155,20 +165,20 @@ const MenuItem: React.FC<{
   const IconComponent = IconMapping[item.icon ?? ""] || HomeIcon;
 
   return (
-    <li className="px-2">
+    <li className="px-3">
       <div
         onClick={toggleOpen}
         className={`
           flex items-center
           rounded-lg
-          hover:bg-blue-100
+          hover:bg-[#D9EBFF]
           transition-all
           duration-500
           cursor-pointer
           ${
             isCollapsed
-              ? "pl-2 pr-1 py-2"
-              : "px-3 py-2"
+              ? "pl-0 pr-0 py-1 px-0"
+              : "px-3 py-1"
           }
         `}
       >
@@ -184,15 +194,17 @@ const MenuItem: React.FC<{
             whitespace-nowrap
             overflow-hidden
             transition-all
-            duration-500
+            ease-in-out
+            duration-1000
+           
             ${
               isCollapsed
-                ? "w-0 opacity-0"
+                ? "w-0 opacity-0 "
                 : "w-auto opacity-100"
             }
           `}
         >
-          {item.title}
+          {item.title} 
         </span>
       </div>
 

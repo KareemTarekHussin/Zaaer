@@ -25,7 +25,7 @@ const FormPage: React.FC = () => {
     setLoading(true);
     const apiCall = mode === "add"
       ? saveForm("modelName", formData) // Save for 'add' mode
-      : updateForm("modelName", id, formData); // Update for 'edit' mode
+      : id ? updateForm("modelName", id, formData) : Promise.reject("ID is undefined"); // Update for 'edit' mode
 
     apiCall
       .then(() => alert("Form saved successfully!"))
@@ -38,7 +38,7 @@ const FormPage: React.FC = () => {
   return (
     <div className="p-6 bg-gray-100 min-h-screen">
       <h1 className="text-2xl font-bold mb-4">{mode === "add" ? "Add New Record" : "Edit Record"}</h1>
-      <Form fields={formStructure} /> {/* Pass the dynamic fields to Form.tsx */}
+      <Form fields={formStructure} formKey={""} /> {/* Pass the dynamic fields to Form.tsx */}
       <button
         type="button"
         onClick={handleSave}

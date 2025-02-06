@@ -1,58 +1,29 @@
 {
-    "filters": [
+    "pageTitle": "Reservations Report with Inline Charts",
+    "components": [
       {
-        "name": "unit_title",
-        "title": "Unit Title",
-        "id": "reservation-unit-unit_title",
-        "type": "select",
-        "options": [
-          { "1": "single Room" },
-          { "2": "Double Room" }
-        ],
-        "value": "",
-        "mandatory": 1,
-        "depends_on": ""
-      },
-      {
-        "name": "guest_id",
-        "title": "Guest ID",
-        "id": "reservation-guest-guest_id",
-        "type": "text",
-        "options": [],
-        "value": "",
-        "mandatory": 1,
-        "depends_on": ""
-      }
-    ],
-    "columns": [
-      { "title": "Reservation No", "name": "reservation_no" },
-      { "title": "Guest Name",     "name": "guest_name" }
-    ],
-    "rows": [
-      { "reservation_no": "RES0001", "guest_name": "Guest 1" },
-      { "reservation_no": "RES0002", "guest_name": "Guest 2" }
-    ],
-    "charts": [
-      {
-        "width": "full",
-        "title": "Chart 1",
-        "name": "reservations_group_by_types",
-        "type": "pie",
-        "data": [
-          { "type": "Type 1", "value": 100 }
-        ],
-        "filters": {
-          "url": "{{BASE_URL}}/api/v1/dashboard/{{dashboard_name}}/",
-          "inputs": [
+        "type": "filter",
+        "config": {
+          "fields": [
             {
               "name": "unit_title",
               "title": "Unit Title",
               "id": "reservation-unit-unit_title",
               "type": "select",
               "options": [
-                { "1": "single Room" },
+                { "1": "Single Room" },
                 { "2": "Double Room" }
               ],
+              "value": "",
+              "mandatory": 1,
+              "depends_on": ""
+            },
+            {
+              "name": "guest_id",
+              "title": "Guest ID",
+              "id": "reservation-guest-guest_id",
+              "type": "text",
+              "options": [],
               "value": "",
               "mandatory": 1,
               "depends_on": ""
@@ -61,28 +32,57 @@
         }
       },
       {
-        "width": "half",
-        "title": "Chart 2",
-        "name": "reservations_group_by_ay_7aga",
-        "type": " doughnut ",
-        "data": [
-          { "type": "Type 1", "value": 100 }
-        ],
-        "filters": {
-          "url": "{{BASE_URL}}/api/v1/dashboard/{{dashboard_name}}/",
-          "inputs": [
+        "type": "list",
+        "config": {
+          "columns": [
+            { "title": "Reservation No", "name": "reservation_no" },
+            { "title": "Guest Name",     "name": "guest_name" }
+          ],
+          "rows": [
+            { "reservation_no": "RES0001", "guest_name": "Guest 1" },
+            { "reservation_no": "RES0002", "guest_name": "Guest 2" },
+            { "reservation_no": "RES0002", "guest_name": "Guest 3" },
+            { "reservation_no": "RES0002", "guest_name": "Guest 4" },
+            { "reservation_no": "RES0002", "guest_name": "Guest 5" },
+            { "reservation_no": "RES0002", "guest_name": "Guest 6" },
+            { "reservation_no": "RES0002", "guest_name": "Guest 7" },
+            { "reservation_no": "RES0002", "guest_name": "Guest 8" },
+            { "reservation_no": "RES0002", "guest_name": "Guest 9" },
+            { "reservation_no": "RES0002", "guest_name": "Guest 10" },
+            { "reservation_no": "RES0002", "guest_name": "Guest 11" },
+            { "reservation_no": "RES0002", "guest_name": "Guest 12" },
+            { "reservation_no": "RES0002", "guest_name": "Guest 13" },
+            { "reservation_no": "RES0002", "guest_name": "Guest 14" },
+            { "reservation_no": "RES0002", "guest_name": "Guest 15" },
+            { "reservation_no": "RES0002", "guest_name": "Guest 16" }
+          ],
+          "totalPages": 3
+        }
+      },
+      {
+        "type": "chart",
+        "config": {
+          "charts": [
             {
-              "name": "unit_title",
-              "title": "Unit Title",
-              "id": "reservation-unit-unit_title",
-              "type": "select",
-              "options": [
-                { "1": "single Room" },
-                { "2": "Double Room" }
-              ],
-              "value": "",
-              "mandatory": 1,
-              "depends_on": ""
+              "width": "full",
+              "title": "Chart 1",
+              "type": "pie",
+              "data": {
+                "labels": ["Type 1", "Type 2", "Type 3"],
+                "values": [100, 50, 25],
+                "colors": ["#FF6384", "#36A2EB", "#FFCE56"]
+              }
+            },
+            {
+              "width": "half",
+              "title": "Chart 2",
+              "name": "reservations_group_by_ay_7aga",
+              "type": "doughnut",
+              "data": {
+                "labels": ["Cat A", "Cat B"],
+                "values": [75, 125],
+                "colors": ["#4caf50", "#f44336"]
+              }
             }
           ]
         }

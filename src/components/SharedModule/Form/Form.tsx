@@ -7,7 +7,7 @@ import Select from "./Select";
 import MultiSelect from "./MultiSelect";
 import FileInput from "./FileInput";
 import SubmitButton from "./SubmitButton";
-import ResetButton from "./ResetButton";
+import ResetButton from "./ResetButton"; //msh sh8al 3shan t2reban m7tag real endpoint
 import TextArea from "./TextArea";
 import ChildTable from "./ChildTable";
 
@@ -18,6 +18,7 @@ import ChildTable from "./ChildTable";
 
   // const onSubmit = (data: any) => {
   //   console.log("Form submitted:", data);
+  //   send to server POST
   // };
 
   // local logic to be removed
@@ -32,7 +33,7 @@ import ChildTable from "./ChildTable";
       });
     }
   }, [formKey, setValue]);
-
+// Phase1  phase 3 will be replaced with api logic
   const onSubmit = (data: any) => {
     console.log("Form submitted:", data);
     localStorage.setItem(formKey, JSON.stringify(data));

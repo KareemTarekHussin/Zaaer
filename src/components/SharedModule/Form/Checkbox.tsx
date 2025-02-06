@@ -7,7 +7,7 @@ const Checkbox: React.FC<{
 }> = ({ id, name, placeholder, value, register }) => {
   // 	It takes (id, placeholder, name, value, is checked)
   return (
-    <div className="mb-4 flex items-center">
+    <div className="mb-4 flex items-center ">
       <input
         id={id}
         type="checkbox"

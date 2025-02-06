@@ -11,7 +11,7 @@ const Input: React.FC<{
   // 	It takes (id, placeholder, name, value)
   return (
     <div className="mb-4">
-      <label htmlFor={id} className="block text-sm font-medium">
+      <label htmlFor={id} className="block text-sm font-medium ">
         {placeholder || name}
       </label>
       <input
@@ -20,7 +20,7 @@ const Input: React.FC<{
         placeholder={placeholder}
         defaultValue={value || ""} // Use value as defaultValue
         {...register(name)} // Register the input
-        className="mt-1 block w-full border-gray-300 rounded-md"
+        className="mt-1 block w-full border-gray-300 rounded-md py-2 px-2 shadow-md border"
       />
     </div>
   );

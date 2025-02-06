@@ -39,6 +39,118 @@
         ]
       },
       {
+        "title": "Guests",
+        "icon": "users",
+        "children": [
+          {
+            "title": "New Guest",
+            "link": "/form/guest/new",
+            "children": []
+          },
+          {
+            "title": "List Guests",
+            "link": "/listview/guest",
+            "children": []
+          }
+        ]
+      },
+      {
+        "title": "Guests",
+        "icon": "users",
+        "children": [
+          {
+            "title": "New Guest",
+            "link": "/form/guest/new",
+            "children": []
+          },
+          {
+            "title": "List Guests",
+            "link": "/listview/guest",
+            "children": []
+          }
+        ]
+      },
+      {
+        "title": "Guests",
+        "icon": "users",
+        "children": [
+          {
+            "title": "New Guest",
+            "link": "/form/guest/new",
+            "children": []
+          },
+          {
+            "title": "List Guests",
+            "link": "/listview/guest",
+            "children": []
+          }
+        ]
+      },
+      {
+        "title": "Guests",
+        "icon": "users",
+        "children": [
+          {
+            "title": "New Guest",
+            "link": "/form/guest/new",
+            "children": []
+          },
+          {
+            "title": "List Guests",
+            "link": "/listview/guest",
+            "children": []
+          }
+        ]
+      },
+      {
+        "title": "Guests",
+        "icon": "users",
+        "children": [
+          {
+            "title": "New Guest",
+            "link": "/form/guest/new",
+            "children": []
+          },
+          {
+            "title": "List Guests",
+            "link": "/listview/guest",
+            "children": []
+          }
+        ]
+      },
+      {
+        "title": "Guests",
+        "icon": "users",
+        "children": [
+          {
+            "title": "New Guest",
+            "link": "/form/guest/new",
+            "children": []
+          },
+          {
+            "title": "List Guests",
+            "link": "/listview/guest",
+            "children": []
+          }
+        ]
+      },
+      {
+        "title": "Guests",
+        "icon": "users",
+        "children": [
+          {
+            "title": "New Guest",
+            "link": "/form/guest/new",
+            "children": []
+          },
+          {
+            "title": "List Guests",
+            "link": "/listview/guest",
+            "children": []
+          }
+        ]
+      },
+      {
         "title": "Settings",
         "icon": "gear",
         "children": [

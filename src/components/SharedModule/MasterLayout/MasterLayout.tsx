@@ -6,11 +6,17 @@ import Navbar from "../NavBar/NavBar";
 const MasterLayout: React.FC = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false); // for mobile
   const [isCollapsed, setIsCollapse] = useState(false);    // for desktop collapse
+//to try a endpoint in phase 1 
+// npm run dev
+// check the mock-api folder
+// try diffrent endpoints (json folders)
+// example
+// http://localhost:5173/dynamic/mega-page 
 
   return (
-    <div className="h-screen flex flex-col">
+    <div className="h-screen flex flex-col select-none">
       {/* NAVBAR AT TOP */}
-      <nav className="drop-shadow-xl">
+      <nav >
       <Navbar
         isCollapsed={isCollapsed}
         setIsCollapse={setIsCollapse}
@@ -30,7 +36,7 @@ const MasterLayout: React.FC = () => {
         />
 
         {/* MAIN CONTENT SCROLLABLE */}
-        <main className="flex-1 overflow-y-auto bg-gray-100 p-4">
+        <main className="flex-1 overflow-y-auto bg-gray-100 p-4 pb-16">
           <Outlet />
         </main>
       </div>

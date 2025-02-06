@@ -63,8 +63,10 @@ export const loadForm = async (modelName: string) => {
 export const loadPageConfig = async (pageName: string) => {
   try {
     const url = `${pageName}.json`;
+    // 3sh debugging bas
     console.log("Fetching page config from:", url);
     const response = await axios.get(`${BASE_URL}/${url}`);
+    // or axios.post("/api/v1/load/page/" + pageName) in phase 3
     return response.data;
   } catch (error) {
     console.error("Error loading page configuration:", error);

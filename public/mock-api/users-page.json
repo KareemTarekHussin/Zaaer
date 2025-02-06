@@ -25,6 +25,7 @@
           "rows": [
             { "username": "Alice", "email": "alice@example.com" },
             { "username": "Bob",   "email": "bob@example.com" },
+            { "username": "Bob",   "email": "bob@example.com" },
             { "username": "Eve",   "email": "eve@example.com" }
           ],
           "filters": {}     

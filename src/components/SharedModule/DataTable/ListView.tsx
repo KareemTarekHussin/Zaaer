@@ -17,7 +17,7 @@ interface FilterValues {
 interface ListViewProps {
   columns: Column[];               // The columns array from config
   rows: RowData[];                 // The rows array from config
-  totalPages?: number;             // If you want a preset totalPages or you can compute it
+  totalPages?: number;             // a  totalPages 
   filters?: FilterValues;          // e.g. { username: "Alice" }
 }
 
@@ -55,6 +55,7 @@ const ListView: React.FC<ListViewProps> = ({
   //     console.error(err);
   //   }
   // };
+  ///////////local temp filter logic
   useEffect(() => {
     if (!rows.length) {
       setDisplayedRows([]);
@@ -82,6 +83,11 @@ const ListView: React.FC<ListViewProps> = ({
           row.username.toLowerCase().includes(filterValue.toLowerCase())
         );
       }
+      else if (filterName === "guest_name") {
+        newFiltered = newFiltered.filter((row) =>
+          row.guest_name.toLowerCase().includes(filterValue.toLowerCase())
+        );
+      }
       else if (filterName === "name") {
         // Compare row.name
         newFiltered = newFiltered.filter((row) =>
@@ -99,6 +105,9 @@ const ListView: React.FC<ListViewProps> = ({
         newFiltered = newFiltered.filter(
           (row) => row.status?.toLowerCase() === filterValue.toLowerCase()
         );
+      }
+      else if (filterName === "room_type") {
+        newFiltered = newFiltered.filter((row) => row.room_type === filterValue);
       }
       else if (filterName === "include_archived") {
         // If user wants archived => 'yes'; skip rows that are not archived logic
@@ -174,7 +183,7 @@ const ListView: React.FC<ListViewProps> = ({
       <div className="mt-4 flow-root px-3">
         <div className="-mx-4 -my-2 overflow-x-auto">
           <div className="inline-block min-w-full py-2 align-middle">
-            <div className="overflow-hidden ring-1 ring-black/5 shadow-sm sm:rounded-lg">
+            <div className="overflow-hidden ring-1 ring-black/5 shadow-sm rounded-xl  sm:rounded-lg">
               <table className="min-w-full divide-y divide-gray-300">
                 <thead className="bg-gray-50">
                   <tr>

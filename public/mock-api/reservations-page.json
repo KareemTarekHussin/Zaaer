@@ -7,7 +7,7 @@
         "fields": [
           {
             "type": "text",
-            "name": "search_name",
+            "name": "guest_name",
             "id": "reservation-list-search_name",
             "title": "Search by Guest Name",
             "placeholder": "Enter guest name"
@@ -31,13 +31,77 @@
       "config": {
         "columns": [
           { "title": "Reservation No", "name": "reservation_no" },
-          { "title": "Guest Name",     "name": "guest_name" }
+          { "title": "Guest Name",     "name": "guest_name" },
+          { "title": "Room Type",      "name": "room_type" }
         ],
         "rows": [
-          { "reservation_no": "RES0001", "guest_name": "Guest 1" },
-          { "reservation_no": "RES0002", "guest_name": "Guest 2" }
+          {
+            "reservation_no": "RES0001",
+            "guest_name": "Guest 1",
+            "room_type": "single"
+          },
+          {
+            "reservation_no": "RES0002",
+            "guest_name": "Guest 2",
+            "room_type": "double"
+          },
+          {
+            "reservation_no": "RES0002",
+            "guest_name": "Guest 2",
+            "room_type": "double"
+          },
+          {
+            "reservation_no": "RES0002",
+            "guest_name": "kaaaaa",
+            "room_type": "double"
+          },
+          {
+            "reservation_no": "RES0002",
+            "guest_name": "Guest 2",
+            "room_type": "double"
+          },
+          {
+            "reservation_no": "RES0002",
+            "guest_name": "Guest 2",
+            "room_type": "double"
+          },
+          {
+            "reservation_no": "RES0002",
+            "guest_name": "Guest 2",
+            "room_type": "double"
+          },
+          {
+            "reservation_no": "RES0002",
+            "guest_name": "Guest 2",
+            "room_type": "double"
+          },
+          {
+            "reservation_no": "RES0002",
+            "guest_name": "Guest 2",
+            "room_type": "double"
+          },
+          {
+            "reservation_no": "RES0002",
+            "guest_name": "Guest 2",
+            "room_type": "double"
+          },
+          {
+            "reservation_no": "RES0002",
+            "guest_name": "Guest 2",
+            "room_type": "double"
+          },
+          {
+            "reservation_no": "RES0002",
+            "guest_name": "Guest 2",
+            "room_type": "double"
+          },
+          {
+            "reservation_no": "RES0002",
+            "guest_name": "Guest 2",
+            "room_type": "double"
+          }
         ],
-        "totalPages": 1
+        "totalPages": 2
       }
     }
   ]

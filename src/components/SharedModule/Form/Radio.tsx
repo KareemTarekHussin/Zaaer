@@ -16,7 +16,7 @@ const Radio: React.FC<{
             type="radio"
             value={option.value}
             {...register(name)} // Register the radio field
-            className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300"
+            className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 "
           />
           <label htmlFor={`${id}-${index}`} className="ml-2 text-sm font-medium">
             {option.title}

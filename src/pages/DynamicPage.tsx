@@ -43,7 +43,7 @@ const DynamicPage: React.FC = () => {
   if (!pageConfig) return <p>No configuration available for this page.</p>;
 
   return (
-    <div className="p-6 bg-gray-100 min-h-screen">
+    <div className=" bg-gray-100 min-h-screen">
       <h1 className="text-2xl font-bold mb-4">{pageConfig.pageTitle}</h1>
       {pageConfig.components.map((component: any, index: number) => {
         switch (component.type) {
@@ -67,11 +67,10 @@ const DynamicPage: React.FC = () => {
           case "chart":
             return component.config.charts.map((chartConfig: any, chartIndex: number) => (
               <ChartComponent
-                key={`${index}-${chartIndex}`}
-                title={chartConfig.title}
-                type={chartConfig.type}
-                dataEndpoint={chartConfig.dataEndpoint}
-                filters={chartConfig.filters || []}
+              key={`${index}-${chartIndex}`}
+              title={chartConfig.title}
+              type={chartConfig.type}
+              chartData={chartConfig.data} 
               />
             ));
           case "form":

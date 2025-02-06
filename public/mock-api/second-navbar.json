@@ -1,0 +1,52 @@
+{
+    "secondNavbar": [
+      {
+        "name": "Admin",
+        "href": "/admin",
+        "icon": "gear",
+        "children": [
+          {
+            "name": "Users",
+            "href": "/admin/users",
+            "icon": "users"
+          },
+          {
+            "name": "Settings",
+            "href": "/admin/settings",
+            "icon": "gear"
+          }
+        ]
+      },
+      {
+        "name": "Reservations",
+        "href": "/reservations",
+        "icon": "calendar"
+      },
+      {
+        "name": "HRMS",
+        "href": "/hrms",
+        "icon": "users"
+      },
+      {
+        "name": "Housekeeping",
+        "href": "/housekeeping",
+        "icon": "gear"
+      },
+      {
+        "name": "Outlets",
+        "href": "/outlets",
+        "icon": "gear"
+      },
+      {
+        "name": "Finance",
+        "href": "/finance",
+        "icon": "gear"
+      },
+      {
+        "name": "Reports",
+        "href": "/reports",
+        "icon": "gear"
+      }
+    ]
+  }
+  

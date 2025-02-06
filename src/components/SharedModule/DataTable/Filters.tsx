@@ -52,7 +52,7 @@ const Filter: React.FC<{
                   placeholder={field.placeholder}
                   value={fieldValue}
                   onChange={(e) => handleChange(field.name, e.target.value)}
-                  className="mt-1 block w-full border-gray-300 rounded-md py-2 px-2"
+                  className="mt-1 block w-full border-gray-300 rounded-md py-2 px-2 shadow-md border"
                 />
               )}
 
@@ -62,7 +62,7 @@ const Filter: React.FC<{
                   id={field.id}
                   value={fieldValue}
                   onChange={(e) => handleChange(field.name, e.target.value)}
-                  className="mt-1  block w-full border-gray-300 rounded-md"
+                  className="mt-1  block w-full border-gray-300 rounded-md py-2 px-2 shadow-md border"
                 >
                   <option value="">
                     {field.placeholder || `Select ${field.title}`}
@@ -83,7 +83,7 @@ const Filter: React.FC<{
                   placeholder={field.placeholder}
                   value={fieldValue}
                   onChange={(e) => handleChange(field.name, e.target.value)}
-                  className="mt-1 block w-full border-gray-300 rounded-md"
+                  className="mt-1 block w-full border-gray-300 rounded-md py-2 px-2 shadow-md border"
                 />
               )}
 

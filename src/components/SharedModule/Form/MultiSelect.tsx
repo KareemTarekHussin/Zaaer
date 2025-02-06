@@ -18,7 +18,7 @@ const MultiSelect: React.FC<{
         multiple
         defaultValue={value} // Use value as defaultValue
         {...register(name)} // Register the multi-select
-        className="mt-1 block w-full border-gray-300 rounded-md"
+        className="mt-1 block w-full border-gray-300 rounded-md py-2 px-2 shadow-md border"
       >
         {options.map((option, index) => (
           <option key={index} value={option.value}>
